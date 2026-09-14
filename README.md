@@ -11,11 +11,6 @@ enforces a strong password policy, hardens SSH, installs brute-force
 protection and enables automatic security updates — with a read-only audit
 mode, a zero-change dry-run, and full backups before any modification.
 
-> **TL;DR بالتونسي:** سكريبت Bash واحد يحمّي السيرفر الجديد أوتوماتيكياً: يسكّر
-> البورتات الخطيرة، يفعّل جدار الحماية، يفرض كلمات سر قوية، يصلّد SSH، يركّب
-> fail2ban ويشغّل التحديثات الأمنية الأوتوماتيكية. تجربو بـ `--audit` (قراءة فقط)
-> و `--dry-run` (بلا تعديل) قبل ما تعملو `--apply`. كل ملف يتبدّل يعمللو backup
-> أوتوماتيكياً.
 
 ---
 
