@@ -1,0 +1,21 @@
+# Test image — Debian 12 (Debian family, systemd-journal backend for fail2ban)
+# openssh-server + libpam-pwquality are pre-installed so the test suite exercises
+# the real sshd drop-in path (sshd -t validation) and pwquality checks.
+# fail2ban / unattended-upgrades stay runtime-installed to exercise pkg_install.
+FROM debian:12
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      bash \
+      ca-certificates \
+      openssh-server \
+      libpam-pwquality \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY . /app
+RUN chmod +x /app/harden.sh /app/tests/run-tests.sh
+
+CMD ["/app/tests/run-tests.sh"]

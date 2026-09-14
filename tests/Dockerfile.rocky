@@ -1,0 +1,15 @@
+# Test image — Rocky Linux 9 (RHEL family, firewalld backend expected on real hosts)
+# openssh-server + libpwquality + authselect are pre-installed so the test suite
+# exercises the real sshd drop-in path, pwquality checks and the authselect
+# faillock wiring. epel-release is enabled; fail2ban stays runtime-installed
+# to exercise the package-install path.
+FROM rockylinux:9
+
+RUN dnf -y install bash openssh-server libpwquality authselect epel-release \
+ && dnf clean all
+
+WORKDIR /app
+COPY . /app
+RUN chmod +x /app/harden.sh /app/tests/run-tests.sh
+
+CMD ["/app/tests/run-tests.sh"]
