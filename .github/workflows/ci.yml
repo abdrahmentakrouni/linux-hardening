@@ -17,7 +17,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq shellcheck
-          python3 -m pip install --quiet bashate
+          python3 -m pip install --quiet --break-system-packages bashate
 
       - name: shellcheck (strict)
         run: shellcheck -x harden.sh lib/*.sh tests/*.sh
