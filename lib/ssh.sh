@@ -230,6 +230,12 @@ apply_ssh() {
       run_cmd "generating missing SSH host keys" ssh-keygen -A
     fi
 
+    # Debian/Ubuntu containers miss /run/sshd; without it sshd -t fails
+    # and the auto-revert would discard the SSH hardening.
+    if [[ ! -d /run/sshd && ! -d /var/empty/sshd ]]; then
+      run_cmd "creating sshd privilege-separation directory (/run/sshd)" mkdir -p /run/sshd
+    fi
+    
     local err
     if err="$(sshd -t 2>&1)"; then
       log_ok "sshd configuration validated (sshd -t)"
