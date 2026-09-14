@@ -5,7 +5,7 @@
 # to exercise the package-install path.
 FROM rockylinux:9
 
-RUN dnf -y install bash openssh-server libpwquality authselect epel-release \
+RUN dnf -y install bash openssh-server libpwquality authselect epel-release diffutils \
  && dnf clean all
 
 WORKDIR /app
