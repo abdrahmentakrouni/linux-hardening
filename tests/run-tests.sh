@@ -27,7 +27,7 @@ ok() { PASS=$((PASS + 1)); printf '  [PASS] %s\n' "$*"; }
 no() { FAIL=$((FAIL + 1)); printf '  [FAIL] %s\n' "$*"; }
 
 echo "======================================================================="
-echo " linux-hardening test suite — $(cat /etc/os-release 2>/dev/null | grep PRETTY_NAME | cut -d'"' -f2)"
+echo " linux-hardening test suite — $(grep PRETTY_NAME /etc/os-release 2>/dev/null | cut -d'"' -f2)"
 echo "======================================================================="
 
 echo "== 1. syntax checks =="
