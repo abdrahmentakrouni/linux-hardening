@@ -13,7 +13,7 @@
 #  Modes: --audit (read-only) | --dry-run (preview) | --apply (enforce)
 #
 #  Author  : Abderrahmen Takrouni
-#  Project: https://github.com/abderrahmen-takrouni/linux-hardening
+#  Project: https://github.com/abdrahmentakrouni/linux-hardening
 #  License: MIT (see LICENSE)
 #===============================================================================
 set -o errexit
@@ -84,7 +84,7 @@ usage() {
 linux-hardening v${VERSION} — automated Linux server hardening
 
 Usage:
-  sudo ./harden.sh <mode> [options]
+  sudo bash harden.sh <mode> [options]
 
 Modes (choose one):
   --audit            read-only security checks + scored report (default)
@@ -292,11 +292,11 @@ print_change_summary() {
     fi
     if (( APPLY_WARNINGS > 0 )); then
       log_warn "completed with $APPLY_WARNINGS warning(s) — full log: $LOG_FILE"
-      log_info "next step: re-run 'sudo ./harden.sh --audit' to verify"
+      log_info "next step: re-run 'sudo bash harden.sh --audit' to verify"
       exit 1
     fi
     log_ok "all operations completed cleanly — full log: $LOG_FILE"
-    log_info "next step: re-run 'sudo ./harden.sh --audit' to verify"
+    log_info "next step: re-run 'sudo bash harden.sh --audit' to verify"
   else
     log_ok "dry-run complete — no changes were made (re-run with --apply to enforce)"
   fi
