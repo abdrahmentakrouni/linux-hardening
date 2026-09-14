@@ -92,7 +92,7 @@ else
 fi
 
 echo "== 5. apply writes the expected configuration =="
-./harden.sh --apply --yes --no-color >/tmp/apply.log 2>&1
+./harden.sh --apply --yes --no-color -c "$CI_CONF" >/tmp/apply.log 2>&1
 rc=$?
 case $rc in
   0|1) ok "apply completed (rc=$rc — warnings tolerated in containers)" ;;
@@ -164,7 +164,7 @@ else
 fi
 
 echo "== 7. idempotency (second apply is safe) =="
-./harden.sh --apply --yes --no-color >/tmp/apply2.log 2>&1
+./harden.sh --apply --yes --no-color -c "$CI_CONF" >/tmp/apply2.log 2>&1
 rc=$?
 case $rc in
   0|1) ok "second apply completed (rc=$rc)" ;;
