@@ -1,0 +1,12 @@
+# logs and local artifacts
+*.log
+backups/
+dist/
+*.tar.gz
+*.zip
+
+# editor / OS noise
+.DS_Store
+.idea/
+.vscode/
+*.swp
