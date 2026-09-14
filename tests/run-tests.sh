@@ -23,6 +23,11 @@ PASS=0
 FAIL=0
 rc=0
 
+# Containers have no authorized_keys; auto mode would keep password auth
+# ON by design (anti-lockout). The suite verifies the key-only path.
+CI_CONF=/app/ci-hardening.conf
+printf 'DISABLE_PASSWORD_AUTH=true\n' > "$CI_CONF"
+
 ok() { PASS=$((PASS + 1)); printf '  [PASS] %s\n' "$*"; }
 no() { FAIL=$((FAIL + 1)); printf '  [FAIL] %s\n' "$*"; }
 
