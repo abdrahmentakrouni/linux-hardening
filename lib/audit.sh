@@ -59,7 +59,7 @@ audit_summary() {
 
   if [[ $FAIL_COUNT -gt 0 ]]; then
     log_error "HARDENING REQUIRED — $FAIL_COUNT check(s) failed (exit code 2)"
-    log_info  "run 'sudo ./harden.sh --dry-run' to preview the changes"
+    log_info  "run 'sudo bash harden.sh --dry-run' to preview the changes"
     exit 2
   elif [[ $WARN_COUNT -gt 0 ]]; then
     log_warn "REVIEW RECOMMENDED — $WARN_COUNT warning(s) (exit code 1)"
